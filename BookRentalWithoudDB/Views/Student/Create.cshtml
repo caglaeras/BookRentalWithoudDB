@@ -2,7 +2,7 @@
 
 <h2>@(Model.ID == 0 ? "Create Student" : "Edit Student")</h2>
 
-<form method="post" asp-action="@(Model.ID == 0 ? "Create" : "Edit")" asp-controller="Student">
+<form method="post" asp-action="Create" asp-controller="Student">
     <input type="hidden" asp-for="ID" />
 
     <table>

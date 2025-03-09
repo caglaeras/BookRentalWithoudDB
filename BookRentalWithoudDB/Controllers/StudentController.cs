@@ -38,8 +38,9 @@ namespace BookRentalWithoudDB.Controllers
 
         public IActionResult Create()
         {
-            return View();
+            return View(new Student());
         }
+
 
         [HttpPost]
         public IActionResult Create(Student student)

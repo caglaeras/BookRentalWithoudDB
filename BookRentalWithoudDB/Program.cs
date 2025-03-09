@@ -1,3 +1,5 @@
+using BookRentalWithoudDB.Data;
+
 namespace BookRentalWithoudDB
 {
     public class Program
@@ -5,6 +7,8 @@ namespace BookRentalWithoudDB
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+            builder.Services.AddSingleton<StudentRespository>();
+
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
