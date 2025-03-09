@@ -1,6 +1,9 @@
 ﻿@model Student
 
-<form method="post" asp-action="create" asp-controller="Student" >
+<h2>@(Model.ID == 0 ? "Create Student" : "Edit Student")</h2>
+
+<form method="post" asp-action="@(Model.ID == 0 ? "Create" : "Edit")" asp-controller="Student">
+    <input type="hidden" asp-for="ID" />
 
     <table>
         <tr>
@@ -20,9 +23,10 @@
             <td><input asp-for="BirthDate" /></td>
         </tr>
         <tr>
-            <td> <input type="submit" value="Create" /> </td>
+            <td> <input type="submit" value="@(Model.ID == 0 ? "Create" : "Save Changes")" class="btn btn-success" /></td>
             <td> </td>
         </tr>
     </table>
 
 </form>
+<a asp-controller="Student" asp-action="Index" class="btn btn-secondary">Cancel</a>

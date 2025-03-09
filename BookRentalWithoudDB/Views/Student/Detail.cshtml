@@ -1,8 +1,11 @@
 ﻿@model Student
 
+<h2>Student Details</h2>
+
 <table>
     <tr>
-        <td width="200">ID</td><td>@Model.ID</td>
+        <td width="200">ID</td>
+        <td>@Model.ID</td>
     </tr>
     <tr>
         <td width="200">Name</td>
@@ -17,3 +20,14 @@
         <td>@Model.BirthDate.ToLongDateString()</td>
     </tr>
 </table>
+
+<!-- Edit Student Button -->
+<a asp-controller="Student" asp-action="Edit" asp-route-id="@Model.ID" class="btn btn-warning">Edit Student</a>
+
+<!-- Delete Student Button -->
+<form asp-controller="Student" asp-action="Delete" asp-route-id="@Model.ID" method="post" style="display:inline;">
+    <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this student?');">Delete Student</button>
+</form>
+
+<!-- Back to List Button -->
+<a asp-controller="Student" asp-action="Index" class="btn btn-secondary">Back to List</a>

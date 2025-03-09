@@ -1,4 +1,9 @@
 ﻿@model List<Student>
+
+<h2>Student List</h2>
+
+<a asp-controller="Student" asp-action="Create" class="btn btn-primary">Create Student</a>
+
 <table>
     <thead>
         <tr>
@@ -9,14 +14,18 @@
         </tr>
     </thead>
 <tbody>
-    @foreach(var item in Model) {
+    @foreach(var item in Model) 
+    {
 
     <tr>
         <td> @item.ID </td>
         <td> @item.Name </td>
         <td> @item.Surname </td>
-        <td><a asp-controller="Student" asp-action="Detail" 
-            asp-route-id="@item.ID"> Click For Detail </a></td>
+        <td>
+            <a asp-controller="Student" asp-action="Detail" 
+            asp-route-id="@item.ID"> Click For Detail 
+            </a>
+        </td>
     </tr>
 
      }

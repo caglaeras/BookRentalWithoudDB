@@ -41,5 +41,35 @@ namespace BookRentalWithoudDB.Controllers
             respository.Insert(student);
             return RedirectToAction("Index");
         }
+
+        [HttpPost]
+        public IActionResult Delete(int id)
+        {
+            _repository.Delete(id);
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult Edit(int id)
+        {
+            var student = _repository.GetStudent(id);
+            if (student == null)
+            {
+                return NotFound();
+            }
+            return View("Create", student); // Reuse Create view for editing
+        }
+
+        [HttpPost]
+        public IActionResult Edit(Student student)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View("Create", student); // Show the form again with validation errors
+            }
+
+            _repository.Update(student);
+            return RedirectToAction("Index");
+        }
+
     }
 }
