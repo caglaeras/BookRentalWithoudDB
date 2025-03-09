@@ -7,6 +7,13 @@ namespace BookRentalWithoudDB.Controllers
 {
     public class StudentController : Controller
     {
+        private readonly StudentRespository _repository;
+
+        public StudentController(StudentRespository repository)
+        {
+            _repository = repository;
+        }
+
         public IActionResult Index()
         {
             StudentRespository repository = new StudentRespository();
