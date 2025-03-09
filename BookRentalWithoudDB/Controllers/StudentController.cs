@@ -45,10 +45,22 @@ namespace BookRentalWithoudDB.Controllers
         [HttpPost]
         public IActionResult Create(Student student)
         {
-            StudentRespository respository = new StudentRespository();
-            respository.Insert(student);
+            StudentRespository repository = new StudentRespository();
+
+            var existingStudent = repository.GetStudent(student.ID);
+
+            if (existingStudent != null)
+            {
+                repository.Update(student);
+            }
+            else
+            {
+                repository.Insert(student);
+            }
+
             return RedirectToAction("Index");
         }
+
 
         [HttpPost]
         public IActionResult Delete(int id)
