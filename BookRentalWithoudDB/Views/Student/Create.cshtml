@@ -3,12 +3,21 @@
 <h2>@(Model.ID == 0 ? "Create Student" : "Edit Student")</h2>
 
 <form method="post" asp-action="Create" asp-controller="Student">
-    <input type="hidden" asp-for="ID" />
+    
 
     <table>
         <tr>
             <td width="200">ID</td>
-            <td><input asp-for="ID" readonly /></td>
+            <td>
+                @if (Model.ID == 0)
+                {
+                    <input id="ID" asp-for="ID" />
+                }
+                else
+                {
+                    <input id="ID" asp-for="ID" readonly />
+                }
+            </td>
         </tr>
         <tr>
             <td width="200">Name</td>

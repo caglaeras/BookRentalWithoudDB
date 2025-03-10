@@ -36,9 +36,17 @@ namespace BookRentalWithoudDB.Controllers
 
         }
 
-        public IActionResult Create()
+        public IActionResult Create(int? id)
         {
-            return View(new Student());
+            if (id.HasValue && id.Value > 0)
+            {
+                var student = _repository.GetStudent(id.Value);
+                if (student != null)
+                {
+                    return View(student); // Edit mode
+                }
+            }
+            return View(new Student()); // Create mode
         }
 
 
